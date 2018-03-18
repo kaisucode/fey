@@ -1,0 +1,52 @@
+
+fey init
+	-Creates .fey file
+
+Adding local aliases	[fey alias command]
+	-fey alias1 "ls -l"
+	-fey add "alias2"
+		-Open up editor of choice to input bash commands
+
+Using local aliases
+	-fey alias1 (add fey in front of command; personally am going to remap to f)
+
+Directory structure
+	.fey
+		|_alias1.sh
+		|_alias2.sh
+		|_alias3.sh
+
+fey add creates
+	***alias1.sh***	(fey add will have to give chmod +x access)
+	#!/bin/bash
+	command
+
+fey alias2 executes
+	cd current_location (get by using pwd)
+	Keep going up until you find the .fey file
+	.fey/[second_argument]
+
+
+|_.fey/ (project root)
+|	|_alias1.sh
+|
+|_working_directory/
+	|_test.hi (created by fey)
+	**execute "fey alias1"**
+
+
+Testing plan: 
+	Alias "fey" to be "/home/kevin/projects/fey/fey.sh"
+	Inside fey.rb: 
+		-pwd to see where to execute
+		-From pwd keep going up until finds .fey file
+		-Read the commands and cd back to pwd location
+		-Execute the file
+		
+
+
+
+
+
+
+
