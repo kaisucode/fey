@@ -40,6 +40,19 @@ elif fey_argument == "add":
         print("Adding new command")
         add(n_arguments, fey_location, sys.argv[2], 0)
     exit()
+elif fey_argument == "rm": 
+    fey_command = sys.argv[2]
+    if not os.path.isfile(fey_location+fey_command+".sh"): 
+        print("Command does not exist")
+        exit()
+    print("Are you sure you want to delete "+fey_command+"? (y/N)")
+    if input().lower() != 'y': 
+        print("Aborted")
+        exit()
+    command_location = fey_location+fey_command+".sh"
+    logging.debug(command_location)
+    os.system("rm %s" % command_location)
+    print("Deleted command: %s" % fey_command)
 else: 
     fey_command = sys.argv[1]+".sh"
     execute(original_directory, fey_location, fey_command)

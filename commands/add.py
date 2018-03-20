@@ -10,16 +10,16 @@ def add(n_arguments, fey_location, fey_command, force):
 
     if (not (n_arguments == 4 and force == 1)) or not os.path.isfile(command_location): 
         fout = open(command_location, "w")
-        command_template_line1 = "#!/bin/bash"
-        command_template_line2 = """#Type in the commands you wish to bind to "%s" below: """
-        fout.write(command_template_line1 + "\n" + command_template_line2 % fey_command + "\n")
+        command_template = ("#!/bin/bash\n"
+                            "#Type in the commands you wish to bind to \"%s\" below: \n")
+        fout.write(command_template % fey_command)
     else: 
         fout = open(command_location, "a")
 
     if n_arguments == 3+force: 
         fout.write("\n"*3)
         fout.close()
-        os.system("nvim "+command_location)
+        os.system("nvim +3 "+command_location)
         if not check_if_added_command(command_location): 
             print("No changes made, command not added")
             os.system("rm %s" % command_location)
