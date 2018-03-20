@@ -6,4 +6,21 @@ def check_if_added_command(command_location):
     minimized_command_file = [line for line in command_file if line.strip()]
     return minimized_command_file
 
+class _GetchUnix:
+    def __init__(self):
+        import tty, sys
+
+    def __call__(self):
+        import sys, tty, termios
+        fd = sys.stdin.fileno()
+        old_settings = termios.tcgetattr(fd)
+        try:
+            tty.setraw(sys.stdin.fileno())
+            ch = sys.stdin.read(1)
+        finally:
+            termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+        print(ch)
+        return ch
+getch = _GetchUnix()
+
 
