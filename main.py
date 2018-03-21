@@ -33,7 +33,9 @@ if fey_argument == "ls":
     list_commands(fey_location)
     exit()
 elif fey_argument == "add": 
-    if n_arguments > 2 and sys.argv[2] == "-f": 
+    if n_arguments == 2: 
+        print("No argument after \"add\"")
+    elif n_arguments > 2 and sys.argv[2] == "-f": 
         print("Overriding old command")
         add(n_arguments, fey_location, sys.argv[3], 1)
     elif os.path.isfile(fey_location+sys.argv[2]+".sh"): 
