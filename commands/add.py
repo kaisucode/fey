@@ -28,4 +28,8 @@ def add(n_arguments, fey_location, fey_command, force):
         fout.close()
     else: 
         print("Too many arguments")
+        return
+    
+    os.chmod(command_location, 0o775)
+
 
