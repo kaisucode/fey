@@ -23,6 +23,7 @@ def add(n_arguments, fey_location, fey_command, force):
         if not check_if_added_command(command_location): 
             print("No changes made, command not added")
             os.system("rm %s" % command_location)
+            return
     elif n_arguments == 4+force: 
         fout.write(fey_command)
         fout.close()
