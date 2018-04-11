@@ -13,6 +13,7 @@ def add(n_arguments, fey_location, fey_command, force):
         command_template = ("#!/bin/bash\n"
                             "#Type in the commands you wish to bind to \"%s\" below: \n")
         fout.write(command_template % fey_command)
+        print(fey_command)
     else: 
         fout = open(command_location, "a")
 

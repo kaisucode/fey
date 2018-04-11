@@ -1,0 +1,18 @@
+
+fey add [command_name]
+fey add -f [command_name]
+
+fey init
+fey ls
+fey rm
+fey [command_name]
+
+
+Broken
+fey add [command_name] "command" (It adds the filename instead of the actual inputted command)
+fey add -f [command_name] "command"
+
+Add in the future
+Command to explain created commands
+fey -q [command_name]
+
