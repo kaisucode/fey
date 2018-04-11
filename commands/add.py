@@ -4,7 +4,7 @@ import logging
 
 from .tools import check_if_added_command
 
-def add(n_arguments, fey_location, fey_command, force): 
+def add(n_arguments, fey_location, fey_command, force, fey_script): 
     command_location = fey_location+fey_command+".sh"
     logging.debug(command_location)
 
@@ -26,7 +26,7 @@ def add(n_arguments, fey_location, fey_command, force):
             os.system("rm %s" % command_location)
             return
     elif n_arguments == 4+force: 
-        fout.write(fey_command)
+        fout.write(fey_script)
         fout.close()
     else: 
         print("Too many arguments")
